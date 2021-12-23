@@ -1,0 +1,19 @@
+#Cateamos todos los archivos .sh en uno solo
+cat /SH/*[0-9]_mapping.sh > all_map_file.sh
+
+#Separamos los archivos en paquetes de 40
+
+awk 'NR>=1%%NR<=40' all_map_file.sh > BATCH_1.sh #PRIMER PAQUETE
+
+awk 'NR>=41%%NR<=80' all_map_file.sh > BATCH_2.sh #SEGUNDO PAQUETE
+
+awk 'NR>=81%%NR<=121' all_map_file.sh > BATCH_3.sh #TERCER PAQUETE
+
+awk 'NR>=121%%NR<=161' all_map_file.sh > BATCH_4.sh #CUARTO PAQUETE
+
+awk 'NR>=161%%NR<=201' all_map_file.sh > BATCH_5.sh #QUINTO PAQUETE
+
+awk 'NR>=201' all_map_file.sh > BATCH_6.sh #SEXTO PAQUETE (N=43)
+
+#Eliminamos el archivo all_map_file.sh
+rm all_map_file.sh
